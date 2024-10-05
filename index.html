@@ -116,11 +116,16 @@
         <!-- Best deal div -->
         <section class="flex justify-between items-center py-4">
             <p class="text-lg md:text-xl lg:text-2xl font-black text-primary">Best Deal For you</p>
-            <div class="flex items-center"><button
-                    class="btn bg-secondary text-base md:text-lg lg:text-xl font-bold text-white text-center mb-8 lg:mb-12 border border-solid border-[secondary] hover:bg-white hover:text-secondary">Sort
+            <div><button
+                    class="btn bg-secondary text-base md:text-lg lg:text-xl font-bold text-white text-center border border-solid border-[secondary] hover:bg-white hover:text-secondary">Sort
                     by Price</button></div>
         </section>
-        <!-- animal card section   -->
+       
+        <!-- spinner  -->
+         <div class="w-full flex justify-center items-center h-80">
+            <span class="loading loading-bars loading-lg"></span>
+         </div>
+          <!-- animal card section   -->
         <section class="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <!-- left div  -->
             <div class="col-span-1 lg:col-span-3">
@@ -337,7 +342,7 @@
     </dialog>
     <!-- footer section -->
     <section class="w-full bg-primary py-12 md:py-24">
-        <div class="w-[90%] mx-auto flex justify-between items-start">
+        <div class="w-[90%] mx-auto flex flex-col lg:flex-row justify-between items-start gap-8">
             <!-- left div -->
             <div class="text-sm md:text-base lg:text-base font-normal text-white/[0.9] space-y-2">
                 <h1
@@ -368,9 +373,9 @@
             <!-- end div  -->
             <div class="text-sm md:text-base lg:text-base font-normal text-white/[0.9] space-y-2">
                 <h1 class="text-base md:text-lg lg:text-lg font-bold text-white flex items-center space-x-2 mb-6">
-                    <span>Useful Links</span>
+                    <span>Drop a Message</span>
                 </h1>
-                <input type="text" class="input w-full bg-[#1F1F1F]" placeholder="Enter your email">
+                <input type="text" class="input w-full bg-[#1F1F1F] mb-4" placeholder="Enter your email">
                 <button
                     class="btn w-full border-none bg-secondary text-base md:text-lg lg:text-xl font-bold text-white text-center hover:bg-white hover:text-secondary">Subscribe
                 </button>
