@@ -18,7 +18,8 @@
             theme: {
                 extend: {
                     colors: {
-                        clifford: '#da373d',
+                        primary: '#131313',
+                        secondary: '#0E7A81',
                     },
                     fontFamily: {
                         'lato': ['Lato'],
@@ -32,6 +33,24 @@
 </head>
 
 <body class="font-lato">
+    <!-- Navbar section -->
+     <section class="w-[90%] mx-auto">
+        <nav class="flex justify-between items-center py-9">
+            <div class="flex space-x-2 items-center">
+                <img src="images/logo.webp" class="w-7 h-6" alt="">
+                <h1 class="text-2xl md:text-[28px] lg:text-[32px] font-black text-primary">Peddy</h1>
+            </div>
+            <div class="text-sm md:text-sm lg:text-base font-normal text-primary flex items-center space-x-4">
+                <P class="hidden md:block cursor-pointer">Home</P>
+                <P class="hidden md:block cursor-pointer">Shop</P>
+                <P class="hidden md:block cursor-pointer">Contact</P>
+                <p class="block md:hidden cursor-pointer"><i class="fa-solid fa-bars fa-rotate-90"></i></p>
+            </div>
+            <div>
+                <button class="btn rounded-full"><i class="fa-regular fa-user"></i></button>
+            </div>
+        </nav>
+     </section>
     <script src="index.js"></script>
 </body>
 
