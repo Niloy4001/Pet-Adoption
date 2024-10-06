@@ -206,27 +206,27 @@ const showModal = (btnElement, breed, date_of_birth, gender, image, pet_name, pr
             <div class="p-5 rounded-xl border border-solid border-[primary]/[0.1]">
                 <div class="mb-6"><img src="${image}" class="w-full rounded-lg" alt=""></div>
                 <h1 class="text-base md:text-lg lg:text-xl font-bold text-primary mb-4">${pet_name}</h1>
-                <div class="text-sm md:text-sm lg:text-base font-normal text-primary/[0.7] mb-4 grid grid-cols-5">
-                    <div class="col-span-2">
-                        <p class="flex items-center">
+                <div class="text-sm md:text-sm lg:text-base font-normal text-primary/[0.7] mb-4 grid grid-cols-6">
+                    <div class="col-span-3 lg:col-span-2">
+                        <p class="flex items-center mb-3">
                             <span class="mr-2"><img src="images/icon/square.png" class="w-5 h-5" alt=""></span>
                             <span>Breed: ${breed ? breed : `Not found`}</span>
                         </p>
-                        <p class="flex items-center">
+                        <p class="flex items-center mb-3">
                             <span class="mr-2"><img src="images/icon/calender.png" class="w-5 h-5" alt=""></span>
                             <span>Birth: ${date_of_birth ? date_of_birth : `Not found`}</span>
                         </p>
-                        <p class="flex items-center">
+                        <p class="flex items-center mb-3">
                             <span class="mr-2"><img src="images/icon/vaccine.png" class="w-5 h-5" alt=""></span>
                             <span>Vaccinated status: ${vaccinated_status ? vaccinated_status : `Not found`}</span>
                         </p>
                     </div>
-                    <div class="col-span-3">
-                        <p class="flex items-center">
+                    <div class="col-span-3 lg:col-span-4">
+                        <p class="flex items-center mb-3">
                             <span class="mr-2"><img src="images/icon/gender.png" class="w-5 h-5" alt=""></span>
                             <span>Gender: ${gender ? gender : `Not found`}</span>
                         </p>
-                        <p class="flex items-center">
+                        <p class="flex items-center mb-3">
                             <span class="mr-2"><img src="images/icon/dollar.png" class="w-5 h-5" alt=""></span>
                             <span>Price : ${price ? price + '$' : `Not found`}</span>
                         </p>
@@ -280,4 +280,12 @@ const showAdoptionModal = (btnElement) => {
 
 
 
+}
+
+
+
+// show navbar
+const showNavbar = () =>{
+    document.getElementById('navbar-div').classList.toggle('hidden')
+    document.getElementById('navbar').classList.toggle('mb-14')
 }
