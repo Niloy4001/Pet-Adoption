@@ -7,7 +7,7 @@ const fetchCategoryBtn = async () => {
 
 }
 fetchCategoryBtn();
-
+// show category btn
 const showCategoryBtn = (array) => {
     const categoryBtnDiv = document.getElementById('category-btn-parent');
     array.forEach(item => {
@@ -17,7 +17,7 @@ const showCategoryBtn = (array) => {
         <div>
             <button class="btn w-full h-[70px] lg:h-24 rounded-2xl flex items-center justify-center space-x-2 common-category" onclick=fetchAllPets(this,'${category}')>
                 <div><img src="${category_icon} " class="w-14 h-14" alt=""></div>
-                <div class=" text-base md:text-xl lg:text-2xl font-bold text-primary">${category} </div>
+                <div class=" text-base md:text-xl lg:text-2xl font-bold text-primary font-inter">${category} </div>
             </button>
         </div>
         `
@@ -78,7 +78,7 @@ const sortElement = (array) =>{
             `
         <div class="p-5 rounded-xl border border-solid border-[primary]/[0.1]">
             <div class="mb-6"><img src="${image} " class="w-full rounded-lg h-[300px] md:h-[330px] lg:h-[360px] object-cover" alt=""></div>
-            <h1 class="text-base md:text-lg lg:text-xl font-bold text-primary mb-4">${pet_name} </h1>
+            <h1 class="text-base md:text-lg lg:text-xl font-bold font-inter text-primary mb-4">${pet_name} </h1>
             <div class="text-sm md:text-sm lg:text-base font-normal text-primary/[0.7] mb-4 space-y-1">
                 <p class="flex items-center">
                     <span class="mr-2"><img src="images/icon/square.png" class="w-5 h-5" alt=""></span>
@@ -145,7 +145,7 @@ const showAllPets = (array) => {
                 `
             <div class="p-5 rounded-xl border border-solid border-[primary]/[0.1]">
                 <div class="mb-6"><img src="${image} " class="w-full rounded-lg h-[300px] md:h-[330px] lg:h-[360px] object-cover" alt=""></div>
-                <h1 class="text-base md:text-lg lg:text-xl font-bold text-primary mb-4">${pet_name} </h1>
+                <h1 class="text-base md:text-lg lg:text-xl font-bold font-inter text-primary mb-4">${pet_name} </h1>
                 <div class="text-sm md:text-sm lg:text-base font-normal text-primary/[0.7] mb-4 space-y-1">
                     <p class="flex items-center">
                         <span class="mr-2"><img src="images/icon/square.png" class="w-5 h-5" alt=""></span>
@@ -205,7 +205,7 @@ const showModal = (btnElement, breed, date_of_birth, gender, image, pet_name, pr
          <div class="modal-box w-11/12 max-w-5xl">
             <div class="p-5 rounded-xl border border-solid border-[primary]/[0.1]">
                 <div class="mb-6"><img src="${image}" class="w-full rounded-lg" alt=""></div>
-                <h1 class="text-base md:text-lg lg:text-xl font-bold text-primary mb-4">${pet_name}</h1>
+                <h1 class="text-base md:text-lg lg:text-xl font-inter font-bold text-primary mb-4">${pet_name}</h1>
                 <div class="text-sm md:text-sm lg:text-base font-normal text-primary/[0.7] mb-4 grid grid-cols-6">
                     <div class="col-span-3 lg:col-span-2">
                         <p class="flex items-center mb-3">
@@ -233,7 +233,7 @@ const showModal = (btnElement, breed, date_of_birth, gender, image, pet_name, pr
                     </div>
                 </div>
                 <div class="border border-solid border-[primary]/[0.1] my-4"></div>
-                <h1 class="text-sm md:text-sm lg:text-base font-semibold text-primary mb-2">Details Information</h1>
+                <h1 class="text-sm md:text-sm lg:text-base font-semibold font-inter text-primary mb-2">Details Information</h1>
                 <p class="text-sm md:text-sm lg:text-base font-normal text-primary/[0.7]">${description}</p>
                 <ul class="list-disc list-inside">
                     <li class="text-sm md:text-sm lg:text-base font-normal text-primary/[0.7] ">${description}</li>
