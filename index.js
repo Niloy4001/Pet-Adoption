@@ -1,3 +1,4 @@
+
 // category btn section
 const fetchCategoryBtn = async () => {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/categories`)
@@ -14,7 +15,7 @@ const showCategoryBtn = (array) => {
         categoryBtnDiv.innerHTML +=
             `
         <div>
-            <button class="btn w-full h-[70px] lg:h-24 rounded-2xl flex items-center justify-center space-x-2 common-category" onclick=fetchAllPets('${category}','${id}')  id = "${id}">
+            <button class="btn w-full h-[70px] lg:h-24 rounded-2xl flex items-center justify-center space-x-2 common-category" onclick=fetchAllPets(this,'${category}','${id}')  id = "${id}">
                 <div><img src="${category_icon} " class="w-14 h-14" alt=""></div>
                 <div class=" text-base md:text-xl lg:text-2xl font-bold text-primary">${category} </div>
             </button>
@@ -24,20 +25,29 @@ const showCategoryBtn = (array) => {
     });
 
 }
+// active category btn
+const activeBtn = (btnElement) => {
+    allBtn = document.getElementsByClassName('common-category');
+    for(let item of allBtn){
+        item.classList.remove('active');
+        item.classList.add('rounded-2xl');
+        
+    }
+    btnElement.classList.remove('rounded-2xl')
+    btnElement.classList.add('active')
+
+}
 
 
 
 // animal card section
-const fetchAllPets = async (categoryName, id) => {
+const fetchAllPets = async (btnElement, categoryName, id) => {
     if (categoryName) {
-        const allBtn = document.getElementsByClassName('common-category')
-
-
-
-
         const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryName}`)
         const data = await res.json()
         showAllPets(data.data);
+        activeBtn(btnElement);
+
     }
     else {
         const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
@@ -89,7 +99,7 @@ const showAllPets = (array) => {
                     class="fa-regular fa-thumbs-up"></i>
             </button>
             <button
-                class="btn bg-white text-base md:text-lg lg:text-xl font-bold text-secondary text-center border border-solid border-[secondary] hover:bg-secondary hover:text-white" onclick = "showAdoptionModal()">Adopt
+                class="btn bg-white text-base md:text-lg lg:text-xl font-bold text-secondary text-center border border-solid border-[secondary] hover:bg-secondary hover:text-white" onclick = "showAdoptionModal(this)">Adopt
             </button>
             <button
                 class="btn bg-white text-base md:text-lg lg:text-xl font-bold text-secondary text-center border border-solid border-[secondary] hover:bg-secondary hover:text-white" data-title = "${pet_details}" onclick = "showModal(this,'${breed ? breed : ``}','${date_of_birth ? date_of_birth : ``}','${gender ? gender : ``}','${image}','${pet_name}','${price ? price : ``}','${vaccinated_status ? vaccinated_status : ``}')">Details
@@ -174,16 +184,21 @@ const showModal = (btnElement, breed, date_of_birth, gender, image, pet_name, pr
 
 
 // show adoption btn modal
-const showAdoptionModal = () => {
+const showAdoptionModal = (btnElement) => {
     document.getElementById('modal-count').innerText = 3;
     my_modal_2.showModal()
-    
+
     let count = 3;
     const timer = setInterval(() => {
         count--;
         if (count < 1) {
             clearInterval(timer);
             my_modal_2.close();
+            btnElement.setAttribute("disabled", true)
+            btnElement.innerText = 'Adopted'
+            console.log(btnElement);
+            
+            
         }
         else {
             document.getElementById('modal-count').innerText = count;
