@@ -18,5 +18,5 @@
 - Block-scoped variables
 - For of loop
 
-## Live link to the deployed project.
+## Live link of this website.
 ### https://peddy-pet-niloy.netlify.app/
