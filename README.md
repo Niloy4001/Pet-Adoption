@@ -11,12 +11,12 @@
 - The Details button shows the full details of that particular pet.
 
 ## ES6 features on this site
-- ## `let` and `const` {#let-const}
+- `let` and `const` {#let-const}
 - Destructuring
 - Arrow Functions
 - Template Literals
 - Block-scoped variables
-- ## `for...of` Loop {#for-of}
+- `for...of` Loop {#for-of}
 
 ## Live link of this website.
 ### https://peddy-pet-niloy.netlify.app/
