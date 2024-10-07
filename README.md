@@ -1,22 +1,22 @@
 ## Peddy - Pet Adoption Platform
 
 ## Description :
- This is a pet adoption website where people can browse and adopt pet . There are a lot of pet loving people , so the site will help them for chossing their pet, adopting. Also webdeveloper's can explore the features of this site.
+ This is a pet adoption website where people can browse and adopt pet . There are many pet-loving people , so this site will help them choose and adopt their pets. Additionally, web developers can explore the features of this site.
  
 ## 5 key features of the project
-- Sort button will show you the info of pet based on their descending ordered price.
-- By clicking like button the thumbnail of that particular pet goes to another section.
+- The Sort button displays the pets' information based on their price in descending order.
+- Clicking the Like button moves the thumbnail of that particular pet to another section.
 - It also shows the pets category wise.
-- Clicking 'Adopt' button It will open a modal where it shows a count-down timer.
-- The 'Details' button shows the full details of that particular pet.
+- The Adopt button opens a modal with a countdown timer.
+- The Details button shows the full details of that particular pet.
 
 ## ES6 features on this site
-- Let and const
+- ## `let` and `const` {#let-const}
 - Destructuring
 - Arrow Functions
 - Template Literals
 - Block-scoped variables
-- For of loop
+- ## `for...of` Loop {#for-of}
 
 ## Live link of this website.
 ### https://peddy-pet-niloy.netlify.app/
