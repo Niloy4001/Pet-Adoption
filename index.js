@@ -1,9 +1,13 @@
 
 // category btn section
 const fetchCategoryBtn = async () => {
-    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/categories`)
-    const data = await res.json()
-    showCategoryBtn(data.categories);
+    try {
+        const res = await fetch(`https://openapi.programming-hero.com/api/peddy/categories`)
+        const data = await res.json()
+        showCategoryBtn(data.categories);
+    } catch (error) {
+        console.log('one error happened', error);
+    }
 
 }
 fetchCategoryBtn();
@@ -44,16 +48,24 @@ const activeBtn = (btnElement) => {
 const fetchAllPets = async (btnElement, categoryName) => {
     document.getElementById('spinner').classList.add('hidden');
     if (categoryName) {
-        const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryName}`)
-        const data = await res.json()
-        showAllPets(data.data);
+        try {
+            const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryName}`)
+            const data = await res.json()
+            showAllPets(data.data);
+        } catch (error) {
+            console.log('one error happened', error);
+        }
         activeBtn(btnElement);
 
     }
     else {
-        const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
-        const data = await res.json()
-        showAllPets(data.pets);
+        try {
+            const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
+            const data = await res.json()
+            showAllPets(data.pets);
+        } catch (error) {
+            console.log('one error happened', error);
+        }
     }
 
 }
@@ -114,7 +126,6 @@ const sortElement = (array) => {
         `
 
     })
-    console.log(array);
 
 }
 // show all pets
@@ -200,6 +211,7 @@ const showModal = (petId) => {
     fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
         .then(res => res.json())
         .then(data => displayModalData(data.petData))
+        .catch((error) => { console.log(error) })
 
     const displayModalData = (data) => {
         const { breed, category, date_of_birth, gender, image, petId, pet_details, pet_name, price, vaccinated_status } = data;
@@ -241,9 +253,6 @@ const showModal = (petId) => {
            <div class="border border-solid border-[primary]/[0.1] my-4"></div>
            <h1 class="text-sm md:text-sm lg:text-base font-semibold font-inter text-primary mb-2">Details Information</h1>
            <p class="text-sm md:text-sm lg:text-base font-normal text-primary/[0.7]">${pet_details}</p>
-           <ul class="list-disc list-inside">
-               <li class="text-sm md:text-sm lg:text-base font-normal text-primary/[0.7] ">${pet_details}</li>
-           </ul>
 
            <div class="modal-action w-full">
                <form method="dialog" class="w-full">
@@ -279,8 +288,6 @@ const showAdoptionModal = (btnElement) => {
             my_modal_2.close();
             btnElement.setAttribute("disabled", true)
             btnElement.innerText = 'Adopted'
-            console.log(btnElement);
-
 
         }
         else {
