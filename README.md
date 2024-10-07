@@ -10,7 +10,7 @@
 - The Adopt button opens a modal with a countdown timer.
 - The Details button shows the full details of that particular pet.
 
-## ES6 features on this site
+## ES6 features used on this site
 - `let` and `const`
 - Destructuring
 - Arrow Functions
