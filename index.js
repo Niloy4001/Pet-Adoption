@@ -212,7 +212,7 @@ const showModal = (petId) => {
         .then(res => res.json())
         .then(data => displayModalData(data.petData))
         .catch((error) => { console.log(error) })
-    console.log('modal connected');
+
     
     const displayModalData = (data) => {
         const { breed, category, date_of_birth, gender, image, petId, pet_details, pet_name, price, vaccinated_status } = data;
