@@ -119,7 +119,7 @@ const sortElement = (array) => {
                 class="btn bg-white text-base md:text-lg lg:text-xl font-bold text-secondary text-center border border-solid border-[secondary] hover:bg-secondary hover:text-white" onclick = "showAdoptionModal(this)">Adopt
             </button>
             <button
-                class="btn bg-white text-base md:text-lg lg:text-xl font-bold text-secondary text-center border border-solid border-[secondary] hover:bg-secondary hover:text-white" data-title = "${pet_details}" onclick = "showModal(this,'${breed ? breed : ``}','${date_of_birth ? date_of_birth : ``}','${gender ? gender : ``}','${image}','${pet_name}','${price ? price : ``}','${vaccinated_status ? vaccinated_status : ``}')">Details
+                class="btn bg-white text-base md:text-lg lg:text-xl font-bold text-secondary text-center border border-solid border-[secondary] hover:bg-secondary hover:text-white" data-title = "${pet_details}" onclick = "showModal('${petId}')">Details
             </button>
         </div>
     </div>
@@ -212,7 +212,8 @@ const showModal = (petId) => {
         .then(res => res.json())
         .then(data => displayModalData(data.petData))
         .catch((error) => { console.log(error) })
-
+    console.log('modal connected');
+    
     const displayModalData = (data) => {
         const { breed, category, date_of_birth, gender, image, petId, pet_details, pet_name, price, vaccinated_status } = data;
 
