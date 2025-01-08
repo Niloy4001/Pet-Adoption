@@ -1,93 +1,94 @@
-
 // category btn section
 const fetchCategoryBtn = async () => {
-    try {
-        const res = await fetch(`https://openapi.programming-hero.com/api/peddy/categories`)
-        const data = await res.json()
-        showCategoryBtn(data.categories);
-    } catch (error) {
-        console.log('one error happened', error);
-    }
-
-}
+  try {
+    const res = await fetch(
+      `https://openapi.programming-hero.com/api/peddy/categories`
+    );
+    const data = await res.json();
+    showCategoryBtn(data.categories);
+  } catch (error) {
+    console.log("one error happened", error);
+  }
+};
 fetchCategoryBtn();
 // show category btn
 const showCategoryBtn = (array) => {
-    const categoryBtnDiv = document.getElementById('category-btn-parent');
-    array.forEach(item => {
-        const { id, category, category_icon } = item;
-        categoryBtnDiv.innerHTML +=
-            `
+  const categoryBtnDiv = document.getElementById("category-btn-parent");
+  array.forEach((item) => {
+    const { id, category, category_icon } = item;
+    categoryBtnDiv.innerHTML += `
         <div>
             <button class="btn w-full h-[70px] lg:h-24 rounded-2xl flex items-center justify-center space-x-2 common-category" onclick=fetchAllPets(this,'${category}')>
                 <div><img src="${category_icon} " class="w-14 h-14" alt=""></div>
                 <div class=" text-base md:text-xl lg:text-2xl font-bold text-primary font-inter">${category} </div>
             </button>
         </div>
-        `
-
-    });
-
-}
+        `;
+  });
+};
 // active category btn
 const activeBtn = (btnElement) => {
-    allBtn = document.getElementsByClassName('common-category');
-    for (let item of allBtn) {
-        item.classList.remove('active');
-        item.classList.add('rounded-2xl');
-
-    }
-    btnElement.classList.remove('rounded-2xl')
-    btnElement.classList.add('active')
-
-}
-
-
+  allBtn = document.getElementsByClassName("common-category");
+  for (let item of allBtn) {
+    item.classList.remove("active");
+    item.classList.add("rounded-2xl");
+  }
+  btnElement.classList.remove("rounded-2xl");
+  btnElement.classList.add("active");
+};
 
 // animal card section
 const fetchAllPets = async (btnElement, categoryName) => {
-    document.getElementById('spinner').classList.add('hidden');
-    if (categoryName) {
-        try {
-            const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryName}`)
-            const data = await res.json()
-            showAllPets(data.data);
-        } catch (error) {
-            console.log('one error happened', error);
-        }
-        activeBtn(btnElement);
-
+  document.getElementById("spinner").classList.add("hidden");
+  if (categoryName) {
+    try {
+      const res = await fetch(
+        `https://openapi.programming-hero.com/api/peddy/category/${categoryName}`
+      );
+      const data = await res.json();
+      showAllPets(data.data);
+    } catch (error) {
+      console.log("one error happened", error);
     }
-    else {
-        try {
-            const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
-            const data = await res.json()
-            showAllPets(data.pets);
-        } catch (error) {
-            console.log('one error happened', error);
-        }
+    activeBtn(btnElement);
+  } else {
+    try {
+      const res = await fetch(
+        `https://openapi.programming-hero.com/api/peddy/pets`
+      );
+      const data = await res.json();
+      showAllPets(data.pets);
+    } catch (error) {
+      console.log("one error happened", error);
     }
+  }
+};
 
-}
-
-fetchAllPets()
-
-
+fetchAllPets();
 
 // sort element
 const sortElement = (array) => {
-    const cardParentDiv = document.getElementById('animal-card-parent-div')
-    cardParentDiv.innerHTML = '';
-    if (array.length == 0) {
-        document.getElementById('empty-section').classList.remove('hidden');
-
-    } else {
-        document.getElementById('empty-section').classList.add('hidden');
-    }
-    array.forEach((item) => {
-        const { breed, category, date_of_birth, gender, image, petId, pet_details, pet_name, price, vaccinated_status } = item
-        cardParentDiv.innerHTML +=
-            `
+  const cardParentDiv = document.getElementById("animal-card-parent-div");
+  cardParentDiv.innerHTML = "";
+  if (array.length == 0) {
+    document.getElementById("empty-section").classList.remove("hidden");
+  } else {
+    document.getElementById("empty-section").classList.add("hidden");
+  }
+  array.forEach((item) => {
+    const {
+      breed,
+      category,
+      date_of_birth,
+      gender,
+      image,
+      petId,
+      pet_details,
+      pet_name,
+      price,
+      vaccinated_status,
+    } = item;
+    cardParentDiv.innerHTML += `
         <div class="p-5 rounded-xl border border-solid border-[primary]/[0.1]">
             <div class="mb-6"><img src="${image} " class="w-full rounded-lg h-[300px] md:h-[330px] lg:h-[360px] object-cover" alt=""></div>
             <h1 class="text-base md:text-lg lg:text-xl font-bold font-inter text-primary mb-4">${pet_name} </h1>
@@ -98,7 +99,9 @@ const sortElement = (array) => {
                 </p>
                 <p class="flex items-center">
                     <span class="mr-2"><img src="images/icon/calender.png" class="w-5 h-5"  alt=""></span>
-                    <span>Birth: ${date_of_birth ? date_of_birth : `Not found`} </span>
+                    <span>Birth: ${
+                      date_of_birth ? date_of_birth : `Not found`
+                    } </span>
                 </p>
                 <p class="flex items-center">
                     <span class="mr-2"><img src="images/icon/gender.png" class="w-5 h-5" alt=""></span>
@@ -106,7 +109,7 @@ const sortElement = (array) => {
                 </p>
                 <p class="flex items-center">
                     <span class="mr-2"><img src="images/icon/dollar.png" class="w-5 h-5" alt=""></span>
-                     <span>Price : ${price ? price + '$' : `Not found`}</span>
+                     <span>Price : ${price ? price + "$" : `Not found`}</span>
                 </p>
         </div>
         <div class="border border-solid border-[primary]/[0.1] my-4"></div>
@@ -123,37 +126,42 @@ const sortElement = (array) => {
             </button>
         </div>
     </div>
-        `
-
-    })
-
-}
+        `;
+  });
+};
 // show all pets
 const showAllPets = (array) => {
+  document.getElementById("sort-btn").addEventListener("click", function () {
+    array.sort((a, b) => b.price - a.price);
+    sortElement(array);
+  });
 
-    document.getElementById('sort-btn').addEventListener('click', function () {
-        array.sort((a, b) => b.price - a.price);
-        sortElement(array);
-
-    })
-
-    const cardParentDiv = document.getElementById('animal-card-parent-div')
-    cardParentDiv.innerHTML = '';
-    document.getElementById('spinner').classList.remove('hidden');
-    document.getElementById('animal-card-section').classList.add('hidden');
-    setTimeout(() => {
-        document.getElementById('spinner').classList.add('hidden');
-        document.getElementById('animal-card-section').classList.remove('hidden');
-        if (array.length == 0) {
-            document.getElementById('empty-section').classList.remove('hidden');
-
-        } else {
-            document.getElementById('empty-section').classList.add('hidden');
-        }
-        array.forEach((item) => {
-            const { breed, category, date_of_birth, gender, image, petId, pet_details, pet_name, price, vaccinated_status } = item
-            cardParentDiv.innerHTML +=
-                `
+  const cardParentDiv = document.getElementById("animal-card-parent-div");
+  cardParentDiv.innerHTML = "";
+  document.getElementById("spinner").classList.remove("hidden");
+  document.getElementById("animal-card-section").classList.add("hidden");
+  setTimeout(() => {
+    document.getElementById("spinner").classList.add("hidden");
+    document.getElementById("animal-card-section").classList.remove("hidden");
+    if (array.length == 0) {
+      document.getElementById("empty-section").classList.remove("hidden");
+    } else {
+      document.getElementById("empty-section").classList.add("hidden");
+    }
+    array.forEach((item) => {
+      const {
+        breed,
+        category,
+        date_of_birth,
+        gender,
+        image,
+        petId,
+        pet_details,
+        pet_name,
+        price,
+        vaccinated_status,
+      } = item;
+      cardParentDiv.innerHTML += `
             <div class="p-5 rounded-xl border border-solid border-[primary]/[0.1]">
                 <div class="mb-6"><img src="${image} " class="w-full rounded-lg h-[300px] md:h-[330px] lg:h-[360px] object-cover" alt=""></div>
                 <h1 class="text-base md:text-lg lg:text-xl font-bold font-inter text-primary mb-4">${pet_name} </h1>
@@ -164,7 +172,9 @@ const showAllPets = (array) => {
                     </p>
                     <p class="flex items-center">
                         <span class="mr-2"><img src="images/icon/calender.png" class="w-5 h-5"  alt=""></span>
-                        <span>Birth: ${date_of_birth ? date_of_birth : `Not found`} </span>
+                        <span>Birth: ${
+                          date_of_birth ? date_of_birth : `Not found`
+                        } </span>
                     </p>
                     <p class="flex items-center">
                         <span class="mr-2"><img src="images/icon/gender.png" class="w-5 h-5" alt=""></span>
@@ -172,7 +182,9 @@ const showAllPets = (array) => {
                     </p>
                     <p class="flex items-center">
                         <span class="mr-2"><img src="images/icon/dollar.png" class="w-5 h-5" alt=""></span>
-                         <span>Price : ${price ? price + '$' : `Not found`}</span>
+                         <span>Price : ${
+                           price ? price + "$" : `Not found`
+                         }</span>
                     </p>
             </div>
             <div class="border border-solid border-[primary]/[0.1] my-4"></div>
@@ -189,38 +201,47 @@ const showAllPets = (array) => {
                 </button>
             </div>
         </div>
-            `
+            `;
+    });
+  }, 2000);
+};
 
-        })
-    }, 2000)
-}
-
-// animal card section right div 
+// animal card section right div
 const showImage = (imageLink) => {
-    const imageParentDiv = document.getElementById('image-parent-div');
-    imageParentDiv.innerHTML += `
+  const imageParentDiv = document.getElementById("image-parent-div");
+  imageParentDiv.innerHTML += `
     <div class="p-2 border border-solid border-[primary]/[0.1] rounded-lg">
         <img src="${imageLink}" class="w-full rounded-lg" alt="">
     </div>
-    `
-}
+    `;
+};
 
-
-// show modal 
+// show modal
 const showModal = (petId) => {
-    fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
-        .then(res => res.json())
-        .then(data => displayModalData(data.petData))
-        .catch((error) => { console.log(error) })
+  fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
+    .then((res) => res.json())
+    .then((data) => displayModalData(data.petData))
+    .catch((error) => {
+      console.log(error);
+    });
 
-    
-    const displayModalData = (data) => {
-        const { breed, category, date_of_birth, gender, image, petId, pet_details, pet_name, price, vaccinated_status } = data;
+  const displayModalData = (data) => {
+    const {
+      breed,
+      category,
+      date_of_birth,
+      gender,
+      image,
+      petId,
+      pet_details,
+      pet_name,
+      price,
+      vaccinated_status,
+    } = data;
 
-        const modalParentDiv = document.getElementById('my_modal_4')
-        modalParentDiv.innerHTML = '';
-        modalParentDiv.innerHTML =
-            `
+    const modalParentDiv = document.getElementById("my_modal_4");
+    modalParentDiv.innerHTML = "";
+    modalParentDiv.innerHTML = `
     <div class="modal-box w-11/12 max-w-5xl">
        <div class="p-5 rounded-xl border border-solid border-[primary]/[0.1]">
            <div class="mb-6"><img src="${image}" class="w-full rounded-lg" alt=""></div>
@@ -233,11 +254,15 @@ const showModal = (petId) => {
                    </p>
                    <p class="flex items-center mb-3">
                        <span class="mr-2"><img src="images/icon/calender.png" class="w-5 h-5" alt=""></span>
-                       <span>Birth: ${date_of_birth ? date_of_birth : `Not found`}</span>
+                       <span>Birth: ${
+                         date_of_birth ? date_of_birth : `Not found`
+                       }</span>
                    </p>
                    <p class="flex items-center mb-3">
                        <span class="mr-2"><img src="images/icon/vaccine.png" class="w-5 h-5" alt=""></span>
-                       <span>Vaccinated status: ${vaccinated_status ? vaccinated_status : `Not found`}</span>
+                       <span>Vaccinated status: ${
+                         vaccinated_status ? vaccinated_status : `Not found`
+                       }</span>
                    </p>
                </div>
                <div class="col-span-3 lg:col-span-4">
@@ -247,7 +272,7 @@ const showModal = (petId) => {
                    </p>
                    <p class="flex items-center mb-3">
                        <span class="mr-2"><img src="images/icon/dollar.png" class="w-5 h-5" alt=""></span>
-                       <span>Price : ${price ? price + '$' : `Not found`}</span>
+                       <span>Price : ${price ? price + "$" : `Not found`}</span>
                    </p>
                </div>
            </div>
@@ -264,46 +289,33 @@ const showModal = (petId) => {
            </div>
        </div>
    </div>
-`
+`;
 
-
-        my_modal_4.showModal();
-
-    }
-
-
-
-}
-
+    my_modal_4.showModal();
+  };
+};
 
 // show adoption btn modal
 const showAdoptionModal = (btnElement) => {
-    document.getElementById('modal-count').innerText = 3;
-    my_modal_2.showModal()
+  document.getElementById("modal-count").innerText = 3;
+  my_modal_2.showModal();
 
-    let count = 3;
-    const timer = setInterval(() => {
-        count--;
-        if (count < 1) {
-            clearInterval(timer);
-            my_modal_2.close();
-            btnElement.setAttribute("disabled", true)
-            btnElement.innerText = 'Adopted'
-
-        }
-        else {
-            document.getElementById('modal-count').innerText = count;
-        }
-    }, 900)
-
-
-
-}
-
-
+  let count = 3;
+  const timer = setInterval(() => {
+    count--;
+    if (count < 1) {
+      clearInterval(timer);
+      my_modal_2.close();
+      btnElement.setAttribute("disabled", true);
+      btnElement.innerText = "Adopted";
+    } else {
+      document.getElementById("modal-count").innerText = count;
+    }
+  }, 900);
+};
 
 // show navbar
 const showNavbar = () => {
-    document.getElementById('navbar-div').classList.toggle('hidden')
-    document.getElementById('navbar').classList.toggle('mb-14')
-}
+  document.getElementById("navbar-div").classList.toggle("hidden");
+  document.getElementById("navbar").classList.toggle("mb-14");
+};
